@@ -10,13 +10,12 @@
 
 <body>
   <a-scene inspector>
-    <a-box width="0.4" height="1.4" depth="0.6" position="-5.8 4.3 -4" rotation= "-70 0 0" color="#4CC3D9"></a-box>
-    <a-sphere position="0 4.3 -4" radius="0.25" color="#DCDCDC"></a-sphere>
-    <a-box width="0.4" height="1.4" depth="0.6" position="5.8 4.3 -4" rotation="-70 0 0" color="#FF0000"></a-box>
+    <a-box id = "play1"width="0.4" height="1.4" depth="0.6" position="-5.8 4.3 -4" rotation= "-70 0 0" color="#4CC3D9"></a-box>
+    <a-sphere position="0 4.3 -4" radius="0.25"  ball dynamic-body position="0 1 -2"> </a-sphere>color="#DCDCDC"></a-sphere>
+    <a-box id = "play2" width="0.4" height="1.4" depth="0.6" position="5.8 4.3 -4" rotation="-70 0 0" color="#FF0000"></a-box>
     <a-plane position="0 4 -4" rotation="-70 0 0" width="12 " height="6  " color="#008000">
     </a-plane>
-    <a-camera position="0 6 6 ">
-    </a-camera>
+    <a-camera raycaster position="0 6 6"></a-camera>
     <a-assets>
       <a-asset-item id="crate-obj" src="models/aztec-temple.obj"></a-asset-item>
       <a-asset-item id="crate-mtl" src="models/aztec-temple.mtl"></a-asset-item>
