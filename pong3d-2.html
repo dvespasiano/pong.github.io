@@ -34,7 +34,14 @@
           var temp_x = event.clientX - this.x_cord;
           var temp_y = event.clientY - this.y_cord;
           this.el.object3D.translateY(temp_x * this.data.speed / 1000);
-          this.y_cord = event.clientY;
+          //this.y_cord = event.clientY;
+          if (event.clientY > 6) {
+            this.y_cord = 6;
+          } else if (event.clientY < 0) {
+            this.y_cord = 0;
+          } else {
+            this.y_cord = event.clientY;
+          }
         }
       }
     });
@@ -59,7 +66,7 @@
       <a-cursor></a-cursor>
     </a-camera>
     <a-assets>
-      
+
       <a-asset-item id="crate-obj" src="models/aztec-temple.obj"></a-asset-item>
       <a-asset-item id="crate-mtl" src="models/aztec-temple.mtl"></a-asset-item>
     </a-assets>
