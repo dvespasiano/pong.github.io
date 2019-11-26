@@ -36,7 +36,7 @@
           var temp_y = event.clientY - this.y_cord;
           this.el.object3D.translateY(temp_x * this.data.speed / 3000);
           this.y_cord = event.clientY;
-          if (this.temp_x == 0) {
+          if (this.temp_y == -20) {
             break;
           }
         }
