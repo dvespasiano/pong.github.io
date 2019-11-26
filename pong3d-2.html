@@ -34,14 +34,20 @@
         if (this.ifMouseDown) {
           var temp_x = event.clientX - this.x_cord;
           var temp_y = event.clientY - this.y_cord;
-          this.el.object3D.translateY(temp_x * this.data.speed / 1000);
+          this.el.object3D.translateY(temp_x * this.data.speed / 3000);
           this.y_cord = event.clientY;
+          if (this.temp_x == 0) {
+            break;
+          }
         }
         if (this.ifMouseUp) {
           var temp_x = event.clientX + this.x_cord;
           var temp_y = event.clientY + this.y_cord;
-          this.el.object3D.translateY(temp_x * this.data.speed / 1000);
+          this.el.object3D.translateY(temp_x * this.data.speed / 3000);
           this.y_cord = event.clientY;
+          if (this.temp_y >= 20) {
+            break;
+          }
         }
       }
     });
@@ -59,9 +65,10 @@
     <a-box id="play2" width="1.2" height="6.2" depth="1.8" position="39.4 5 -30" rotation="-90 0 0" color="#FF0000"
       mover-players></a-box>
     </a-box>
-  
-      <a-sphere id="ball" position="0 5 -30" animation="property: position; to: 20 0 0; loop: true; dur: 2800" radius="1.25" color="#DCDCDC">
-      </a-sphere>
+
+    <a-sphere id="ball" position="0 5 -30" animation="property: position; to: 20 0 0; loop: true; dur: 2800"
+      radius="1.25" color="#DCDCDC">
+    </a-sphere>
 
 
 
