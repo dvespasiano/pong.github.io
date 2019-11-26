@@ -52,16 +52,16 @@
     <a-box id="play2" width="1.2" height="6.2" depth="1.8" position="39.4 5 -30" rotation="-90 0 0" color="#FF0000"
       mover-players></a-box>
     </a-box>
-  
-      <a-sphere id="ball" position="0 5 -30" animation="property: position; to: 20 0 0; loop: true; dur: 2800" radius="1.25" color="#DCDCDC">
-      </a-sphere>
 
+    <a-sphere id="ball" position="37.5 5 -30" radius="1.25" color="#DCDCDC">
+      <a-animation attribute = "position" to ="-37.5 5 -30" repeat ="indefinite" dur="5000"></a-animation>
+    </a-sphere>
 
+    <a-entity position="0 30 34">
+      <a-camera user-height= "3.0" look-controls="enabled:false">
+      </a-camera>
+    </a-entity>
 
-
-    <a-camera position="0 30 34" look-controls="enabled:false">
-      <a-cursor></a-cursor>
-    </a-camera>
     <a-assets>
 
       <a-asset-item id="crate-obj" src="models/aztec-temple.obj"></a-asset-item>
