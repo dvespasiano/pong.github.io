@@ -21,15 +21,11 @@
         this.x_cord = 0;
         this.y_cord = 0;
 
-
-
         const el = this.el;
         const player = document.getElementById('player');
         const playerPos = el.getAttribute('position');
         console.log("y " + playerPos.y);
-        if (playerPos.y > 54) {
-          playerPos.y = "0";
-        }
+
 
 
 
@@ -50,15 +46,35 @@
         if (this.ifMouseDown) {
           var temp_x = event.clientX - this.x_cord;
           var temp_y = event.clientY - this.y_cord;
-          this.el.object3D.translateZ(temp_y * this.data.speed / 50);
-          this.el.object3D.translateX(temp_x * this.data.speed / 100);
+          this.el.object3D.translateZ(-temp_y * this.data.speed / 10);
+          this.el.object3D.translateX(temp_x * this.data.speed / 10);
           this.y_cord = event.clientY;
           this.x_cord = event.clientX;
+          const el = this.el;
+          const player = document.getElementById('player');
+          const playerPos = el.getAttribute('position');
+          if (playerPos.y > 54) {
+            playerPos.y = "52";
+          }
+          if (playerPos.y < -50) {
+            playerPos.y = "-50";
+          }
+          if (playerPos.x < -112.4 ) {
+            playerPos.x = "-110.4";
+          }
+          if (playerPos.x > 0 ) {
+            playerPos.x = "0";
+          }
+          
+
 
         }
       }
 
     });
+
+
+
   </script>
 
 
@@ -73,7 +89,7 @@
       rotation="0 90 90" color="black">
     </a-box>
     <a-box static body physics-collider="ignoreSleep: true" id="ladod" scale="0.1  8 243" position="0.4 -57 -28"
-      rotation="0 90 90" color="black"> 
+      rotation="0 90 90" color="black">
     </a-box>
 
 
@@ -85,16 +101,16 @@
     </a-box>
 
 
-    <a-box static-body physics-collider="ignoreSleep: true" id="player" scale="4.9  8 18.6" position="-112.4  0 -25"
+    <a-box static-body physics-collider="ignoreSleep: true" id="player" scale="3.9  10 19.6" position="-112.4  0 -23"
       rotation="-90 0 0" color="#4CC3D9" mover-players>
     </a-box>
-    <a-box static-body physics-collider="ignoreSleep: true" id="player" scale="4.9  8 18.6" position="112.4 80 -25"
-      rotation="-90 0 0" color="#FF0000" mover-players>
+    <a-box static-body physics-collider="ignoreSleep: true" id="enemy" scale="3.9  10 19.6" position="112.4 0 -23"
+      rotation="-90 0 0" color="#FF0000">
     </a-box>
     <!-- look-controls wasd-controls mexer paletas com  wasd-->
     <!--  mover-players mecher com mouse no eixo x-->
     </a-box>
-    <a-sphere static body dir="1000" id="ball" position="110.5 15 -26" radius="2.25" color="#DCDCDC"></a-sphere>
+    <a-sphere static body dir="1000" id="ball" position="-100.5 15 -27" radius="2.25" color="#DCDCDC"></a-sphere>
     </a-sphere>
 
     <a-entity position="-0 -10 80">
