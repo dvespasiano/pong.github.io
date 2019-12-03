@@ -8,10 +8,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+<<<<<<< HEAD
   <script
     src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
   <!--script!-- src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></!--script!-->
 
+=======
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
+  <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+  
+>>>>>>> parent of bb71406... Update pong3d-2.html
 <body>
   <script type="text/javascript">
     AFRAME.registerComponent('mover-players', {
@@ -23,10 +29,6 @@
         document.addEventListener('mousedown', this.OnDocumentMouseDown.bind(this));
         document.addEventListener('mouseup', this.OnDocumentMouseUp.bind(this));
         document.addEventListener('mousemove', this.OnDocumentMouseMove.bind(this));
-        document.addEventListener('click', function () {
-
-          //play1.setAttribute("position", "-112 54 -29")
-        });
       },
       OnDocumentMouseDown: function (event) {
         this.ifMouseDown = true;
@@ -43,34 +45,30 @@
           this.el.object3D.translateZ(temp_x * this.data.speed / 100);
           this.y_cord = event.clientY;
         }
-      },
-      Click: function (event) {
-
-
       }
     });
   </script>
 
 
-  <a-scene physics="gravity: 9">
+
+  <a-scene physics="gravity: 0" >
     <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
-      </a-box>-->
-    <a-plane static-body physics-collider="ignoreSleep: true" src="mesa.jpg" position="0 4 -30" rotation="0 0 0"
-      width="240 " height="120  " color="#00800">
+    </a-box>-->
+    <a-plane static-body physics-collider="ignoreSleep: true" src="mesa.jpg" position="0 4 -30" rotation="0 0 0" width="240 "
+      height="120  " color="#00800">
     </a-plane>
 
-    <a-box static-body physics-collider="ignoreSleep: false" id="play1" scale="4.9  3 18.6" position="-112.4 5  -29"
+    <a-box static-body physics-collider="ignoreSleep: false" id="play1" scale="4.9  3 18.6" position="-112.4 3  -28"
       rotation="-90 0 0" color="#4CC3D9" mover-players>
     </a-box>
-    <a-box static-body physics-collider="ignoreSleep: true" id="play2" scale="4.9  3 18.6" position="112.4 5  -29"
+    <a-box static-body physics-collider="ignoreSleep: true" id="play2" scale="4.9  3 18.6" position="112.4 3  -28"
       rotation="-90 0 0" color="#FF0000" mover-players>
     </a-box>
     <!-- look-controls wasd-controls mexer paletas com  wasd-->
     <!--  mover-players mecher com mouse no eixo x-->
     </a-box>
-    <a-sphere static-body physics-collider="ignoreSleep: true" collideConnected="true" id="ball" position="109.5 5 -29"
-      radius="2.25" color="#DCDCDC"
-      animation="property: position;dur: 4500; easing: linear;; to: -130.5 5 -29; dir:alternate; easing: easeInSine; loop:true">
+    <a-sphere static-body physics-collider="ignoreSleep: true"  collideConnected = "false" id="ball" position="109.5 5 -29" radius="2.25" color="#DCDCDC"
+      animation="property: position; dur: 1500; easing: linear; to: -130.5 5 -29; dir:alternate; easing: easeInSine; loop:true">
     </a-sphere>
 
     <a-entity position="0 -5 48">
@@ -81,19 +79,12 @@
     <a-assets>
       <!--
       <a-asset-item id="crate-obj" src="models/aztec-temple.obj"></a-asset-item>
-        <a-asset-item id="crate-mtl" src="models/aztec-temple.mtl"></a-asset-item>
-        -->
+      <a-asset-item id="crate-mtl" src="models/aztec-temple.mtl"></a-asset-item>
+      -->
     </a-assets>
     <a-obj-model src="#crate-obj" mtl="#crate-mtl  "></a-obj-model>
-    <a-sky static-body physics-collider="ignoreSleep: true" id="sky" color="#00ced1"></a-sky>
-    <script>
-      while (true) {
-        if (play1.getAttribute("position").z >= 54) {
-          play1.setAttribute("position").z = "54";
-        }
-        //setTimeout(10);
-      }
-    </script>
+    <a-sky  static-body physics-collider="ignoreSleep: true" id="sky" color="#00ced1"></a-sky>
+
   </a-scene>
 
 
