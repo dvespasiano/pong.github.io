@@ -20,6 +20,14 @@
         this.ifMouseDown = false;
         this.x_cord = 0;
         this.y_cord = 0;
+        const el = this.el
+        const player = document.getElementById('player')
+        const playerPos = el.getAttribute('position')
+        console.log("z " + playerPos.z);
+        if (playerPos.z > 54) {
+          playerPos.z = "54"
+        }
+
         document.addEventListener('mousedown', this.OnDocumentMouseDown.bind(this));
         document.addEventListener('mouseup', this.OnDocumentMouseUp.bind(this));
         document.addEventListener('mousemove', this.OnDocumentMouseMove.bind(this));
@@ -28,7 +36,7 @@
         this.ifMouseDown = true;
         this.x_cord = event.clientX;
         this.y_cord = event.clientY;
-        
+
       },
       OnDocumentMouseUp: function () {
         this.ifMouseDown = false;
@@ -38,20 +46,8 @@
           var temp_x = event.clientX - this.x_cord;
           var temp_y = event.clientY - this.y_cord;
           this.el.object3D.translateZ(temp_x * this.data.speed / 100);
-          this.y_cord = event.clientY;
-          OnAtualizacena();
+          this.y_cord = event.clientY;      
         }
-      },
-      OnAtualizacena: function(event){
-        const el = this.el
-        const player = document.getElementById('player')
-        const playerPos = el.getAttribute('position')
-        console.log("z " + player.getAttribute("position").z);
-
-        if (player.getAttribute("position").z > 54) {
-          player.setAttribute("position").z = "54"
-        }
-
       }
 
     });
@@ -62,7 +58,7 @@
   <a-scene physics="debug: false;gravity: 0;friction: 0; restitution: 1.0;" antialias="true">
     <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
     </a-box>-->
-    <a-plane src="mesa.jpg" position="0 4 -30" rotation="0 0 0" width="240 " height="120  " color="#00800">
+    <a-plane src="img.jpg" position="0 4 -30" rotation="0 0 0" width="240 " height="120  " material="color: black">
     </a-plane>
 
     <a-box static body physics-collider="ignoreSleep: true" id="ladoe" scale="4.9  2 240" position="0.4 65 -28"
@@ -104,7 +100,7 @@
       <a-asset-item id="crate-mtl" src="models/aztec-temple.mtl"></a-asset-item>
       -->
     </a-assets>
-    <a-obj-model src="#crate-obj" mtl="#crate-mtl  "></a-obj-model>
+    <!--<a-obj-model src="#crate-obj" mtl="#crate-mtl  "></a-obj-model> -->
     <a-sky id="sky" color="#00ced1"></a-sky>
 
   </a-scene>
