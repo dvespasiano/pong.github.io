@@ -28,14 +28,7 @@
         this.ifMouseDown = true;
         this.x_cord = event.clientX;
         this.y_cord = event.clientY;
-        const el = this.el
-        const player = document.getElementById('player')
-        const playerPos = el.getAttribute('position')
-        console.log("z " + player.getAttribute("position").z);
-
-        if (player.getAttribute("position").z > 54) {
-          player.setAttribute("position").z = "54"
-        }
+        
       },
       OnDocumentMouseUp: function () {
         this.ifMouseDown = false;
@@ -46,10 +39,21 @@
           var temp_y = event.clientY - this.y_cord;
           this.el.object3D.translateZ(temp_x * this.data.speed / 100);
           this.y_cord = event.clientY;
-
-
+          OnAtualizacena();
         }
+      },
+      OnAtualizacena: function(event){
+        const el = this.el
+        const player = document.getElementById('player')
+        const playerPos = el.getAttribute('position')
+        console.log("z " + player.getAttribute("position").z);
+
+        if (player.getAttribute("position").z > 54) {
+          player.setAttribute("position").z = "54"
+        }
+
       }
+
     });
   </script>
 
