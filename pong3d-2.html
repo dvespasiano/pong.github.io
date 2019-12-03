@@ -8,9 +8,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
-  <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
+  <script
+    src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
   <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
-  
+
 <body>
   <script type="text/javascript">
     AFRAME.registerComponent('mover-players', {
@@ -37,12 +38,6 @@
           var temp_y = event.clientY - this.y_cord;
           this.el.object3D.translateZ(temp_x * this.data.speed / 100);
           this.y_cord = event.clientY;
-          console.log("z "+ play.getAttribute("position").z);
-
-          if(play.getAttribute("position").z > 54){
-            play.setAttribute("position").z = "54"
-          }
-
         }
       }
     });
@@ -50,43 +45,28 @@
 
 
 
-  <a-scene  physics="debug: false;gravity: 0;friction: 0; restitution: 1.0;" antialias="true">
+  <a-scene physics="gravity: 0" >
     <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
     </a-box>-->
-    <a-plane  src="mesa.jpg" position="0 4 -30" rotation="0 0 0" width="240 "
+    <a-plane static-body physics-collider="ignoreSleep: true" src="mesa.jpg" position="0 4 -30" rotation="0 0 0" width="240 "
       height="120  " color="#00800">
     </a-plane>
 
-    <a-box static body  physics-collider="ignoreSleep: true"  id="ladoe" scale="4.9  2 240" position="0.4 65 -28"
-      rotation="0 90 0" color="white" >
-    </a-box>
-    <a-box  static body physics-collider="ignoreSleep: true" id="ladod" scale="4.9  2 240" position="0.4 -57 -28"
-    rotation="0 90 0" color="white">
-  </a-box>
-
-
-  <a-box static body  physics-collider="ignoreSleep: true"  id="trase" scale="4.9  2 125" position="-125 3 -28"
-      rotation="90 0 0" color="white" >
-    </a-box>
-    <a-box  static body physics-collider="ignoreSleep: true" id="trasd" scale="4.9  2 125" position="125  3 -28"
-    rotation="90 0 0" color="white">
-  </a-box>
-
-
-    <a-box static-body  physics-collider="ignoreSleep: true" id="play" scale="4.9  5 18.6" position="-112.4 3 -28"
+    <a-box static-body physics-collider="ignoreSleep: false" id="play1" scale="4.9  3 18.6" position="-112.4 3  -28"
       rotation="-90 0 0" color="#4CC3D9" mover-players>
     </a-box>
-    <a-box  static-body physics-collider="ignoreSleep: true"  id="play" scale="4.9  5 18.6" position="112.4 3 -28"
+    <a-box static-body physics-collider="ignoreSleep: true" id="play2" scale="4.9  3 18.6" position="112.4 3  -28"
       rotation="-90 0 0" color="#FF0000" mover-players>
     </a-box>
     <!-- look-controls wasd-controls mexer paletas com  wasd-->
     <!--  mover-players mecher com mouse no eixo x-->
     </a-box>
-    <a-sphere static body  dir ="1000" id="ball" position="110.5 15 -29" radius="2.25" color="#DCDCDC"></a-sphere>
+    <a-sphere static-body physics-collider="ignoreSleep: true"  collideConnected = "false" id="ball" position="109.5 5 -29" radius="2.25" color="#DCDCDC"
+      animation="property: position; dur: 1500; easing: linear; to: -130.5 5 -29; dir:alternate; easing: easeInSine; loop:true">
     </a-sphere>
 
-    <a-entity position="-0 -10 80">
-      <a-camera user-height="-20.0" look-controls="enabled:false">
+    <a-entity position="0 -5 48">
+      <a-camera user-height="10.0" look-controls="enabled:false">
       </a-camera>
     </a-entity>
 
@@ -97,7 +77,7 @@
       -->
     </a-assets>
     <a-obj-model src="#crate-obj" mtl="#crate-mtl  "></a-obj-model>
-    <a-sky  id="sky" color="#00ced1"></a-sky>
+    <a-sky  static-body physics-collider="ignoreSleep: true" id="sky" color="#00ced1"></a-sky>
 
   </a-scene>
 
