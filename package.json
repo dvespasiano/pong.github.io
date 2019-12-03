@@ -21,6 +21,7 @@
     "vr"
   ],
   "dependencies": {
+    "aframe-no-click-look-controls": "^1.0.4",
     "aframe-physics-system": "^4.0.1"
   }
 }
