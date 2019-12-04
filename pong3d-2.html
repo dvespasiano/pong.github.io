@@ -22,9 +22,9 @@
         p1.setAttribute("value", scoreVal);
         p2.setAttribute("value", scoreVal);
       }
-      AFRAME.registerComponent('mover-players',
-        schema : { speed: { default: 1 } },
-        init : function () {
+      AFRAME.registerComponent('mover-players', {
+        schema: { speed: { default: 1 } },
+        init: function () {
           this.ifMouseDown = false;
           this.x_cord = 0;
           this.y_cord = 0;
@@ -79,7 +79,7 @@
           }
         }
 
-    });
+      });
 
 
 
