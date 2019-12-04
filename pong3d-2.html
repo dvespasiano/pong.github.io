@@ -62,8 +62,11 @@
   </script>
 
 
-
   <a-scene physics="debug: false;gravity: 0;friction: 0; restitution: 1.0;" antialias="true">
+    <a-text value="Player 1: " width="100" id="p1" color="black" position="-80 52 0" rotation="0 0 0"></a-text>
+    <a-text value="scoreP1" width="100" bold=true id="scoreP1" color="white" position="-62 52 0" rotation="0 0 0"></a-text>
+    <a-text value="Player 2: " width="100" id="p2" color="black" position="40 52 0" rotation="0 0 0"></a-text>
+    <a-text value="scoreP2" width="100" id="scoreP2" color="white" position="60 52 0" rotation="0 0 0"></a-text>
     <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
     </a-box>-->
     <a-plane src="img.jpg" position="0 4 -30" rotation="0 0 0" width="240 " height="120  " color="black">
@@ -73,7 +76,7 @@
       rotation="0 90 90" color="black">
     </a-box>
     <a-box static body physics-collider="ignoreSleep: true" id="ladod" scale="0.1  8 243" position="0.4 -57 -28"
-      rotation="0 90 90" color="black"> 
+      rotation="0 90 90" color="black">
     </a-box>
 
 
