@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "aframe-no-click-look-controls": "^1.0.4",
-    "aframe-physics-system": "^4.0.1"
+    "aframe-physics-system": "^4.0.1",
+    "aframe-watcher": "^1.4.0"
   }
 }
