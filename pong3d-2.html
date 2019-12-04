@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<scrip>
   <meta charset="utf-8">
   <title>PONG</title>
   <meta name="description" content="PONG">
@@ -14,9 +14,11 @@
 
 <body>
   <script type="text/javascript">
-    AFRAME.registerComponent('mover-players', {
-      schema: { speed: { default: 1 } },
-      init: function () {
+    var p1 = 0;
+    var p2 = 0;
+    AFRAME.registerComponent('mover-players',
+      schema : { speed: { default: 1 } },
+      init : function () {
         this.ifMouseDown = false;
         this.x_cord = 0;
         this.y_cord = 0;
@@ -59,13 +61,13 @@
           if (playerPos.y < -45) {
             playerPos.y = "-45";
           }
-          if (playerPos.x < -112.4 ) {
+          if (playerPos.x < -112.4) {
             playerPos.x = "-110.4";
           }
-          if (playerPos.x > 0 ) {
+          if (playerPos.x > 0) {
             playerPos.x = "0";
           }
-          
+
 
 
         }
@@ -80,9 +82,10 @@
 
   <a-scene physics="debug: false;gravity: 0;friction: 0; restitution: 1.0;" antialias="true">
     <a-text value="Player 1: " width="100" id="p1" color="black" position="-80 52 0" rotation="0 0 0"></a-text>
-    <a-text value="scoreP1" width="100" bold=true id="scoreP1" color="white" position="-62 52 0" rotation="0 0 0"></a-text>
+    <a-text value=[p1] width="100" bold=true id="scoreP1" color="white" position="-62 52 0" rotation="0 0 0">
+    </a-text>
     <a-text value="Player 2: " width="100" id="p2" color="black" position="40 52 0" rotation="0 0 0"></a-text>
-    <a-text value="scoreP2" width="100" id="scoreP2" color="white" position="60 52 0" rotation="0 0 0"></a-text>
+    <a-text value="A" width="100" id="scoreP2" color="white" position="60 52 0" rotation="0 0 0"></a-text>
     <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
     </a-box>-->
     <a-plane src="img.jpg" position="0 4 -30" rotation="0 0 0" width="240 " height="120  " color="black">
