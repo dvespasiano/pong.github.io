@@ -26,8 +26,8 @@
        
         if (comeca) {
           console.log("chegou" +comeca)
-          while (posicaoJuiz.x > -2) {
-            posicaoJuiz.x = posicaoJuiz.x -0.5;
+          while (posicaoJuiz.z < 80) {
+            posicaoJuiz.z = posicaoJuiz.z + 5;
           }
           
         }
@@ -48,6 +48,7 @@
       function click() {
         startGame();
         console.log("Começou");
+       
       }
 
       AFRAME.registerComponent('mover-players', {
@@ -152,7 +153,7 @@
         rotation="90 0 0" color="black">
       </a-box>
 
-      <a-box static-body physics-collider="ignoreSleep: true" id="juiz" scale="10 15 20" position="10  200 -22"
+      <a-box static-body physics-collider="ignoreSleep: true" id="juiz" scale="10 15 20" position="10  68 -22"
         rotation="-0 0 30" color="white">
       </a-box>
       
@@ -168,7 +169,7 @@
       <!-- look-controls wasd-controls mexer paletas com  wasd-->
       <!--  mover-players mecher com mouse no eixo x-->
       </a-box>
-      <a-sphere static body id="ball" position="-100 0 -23" radius="2.5" color="#DCDCDC"></a-sphere>
+      <a-sphere static body id="ball" position="8 65 -23" radius="2.5" color="#DCDCDC"></a-sphere>
       </a-sphere>
 
       <a-entity position="-0 -10 80">
