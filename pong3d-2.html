@@ -14,7 +14,7 @@
 
   <body>
     <script type="text/javascript">
-     
+
       var comeca = "true";
       var pontosP1 = 0;
       var pontosP2 = 0;
@@ -23,14 +23,15 @@
       function startGame() {
         const juiz = document.getElementById('juiz');
         const posicaoJuiz = juiz.getAttribute('position');
-       
+        const rotationjuiz = juiz.getAttribute("rotatiom");
+
         if (comeca) {
-          console.log("chegou" +comeca)
-          while (posicaoJuiz.z < 80) {
-            posicaoJuiz.z = posicaoJuiz.z + 5;
+          while (posicaoJuiz.x > -5) {
+            posicaoJuiz.x = posicaoJuiz.x - 1;
+            
           }
-          
         }
+
       }
 
 
@@ -40,17 +41,31 @@
         p2.setAttribute("value", pontosP2);
       }
       function atualizaTela() {
-        //atualizar a tela
+
+        console.log("teste");
       }
+
+      document.onkeydown = press_keyboard;
+      function press_keyboard(evento) {
+        if (evento.keyCode == 32) {//space
+          startGame();
+          console.log("começou")
+        }
+        if (evento.keyCode == 13) {//enter
+          atualizaTela();
+        }
+      }
+
 
       document.addEventListener('click', click);
-
-      function click() {
-        startGame();
-        console.log("Começou");
-       
+      function click(evento) {
+        const juiz = document.getElementById('juiz');
+        const posicaoJuiz = juiz.getAttribute('position');
+        if (comeca) {
+        posicaoJuiz.z = 80;
+        comeca = "false";
+        }
       }
-
       AFRAME.registerComponent('mover-players', {
         schema: { speed: { default: 1 } },
         init: function () {
@@ -153,14 +168,14 @@
         rotation="90 0 0" color="black">
       </a-box>
 
-      <a-box static-body physics-collider="ignoreSleep: true" id="juiz" scale="10 15 20" position="10  68 -22"
-        rotation="-0 0 30" color="white">
+      <a-box static-body physics-collider="ignoreSleep: true" id="juiz" scale="2 15 20" position="10  65 -22"
+        rotation="-0 0 30" color="black">
       </a-box>
-      
-      <a-box static-body physics-collider="ignoreSleep: true" id="player" scale="4 15 20" position="-104  0 -22"
+
+      <a-box static-body physics-collider="ignoreSleep: true" id="player" scale="4 15 20" position="-104  5 -22"
         rotation="-90 0 0" color="#4CC3D9" mover-players>
       </a-box>
-     
+
 
 
       <a-box static-body physics-collider="ignoreSleep: true" id="enemy" scale="3  15 20" position="104 5 -22"
@@ -169,7 +184,7 @@
       <!-- look-controls wasd-controls mexer paletas com  wasd-->
       <!--  mover-players mecher com mouse no eixo x-->
       </a-box>
-      <a-sphere static body id="ball" position="8 65 -23" radius="2.5" color="#DCDCDC"></a-sphere>
+      <a-sphere static body id="ball" position="-3 62.5 -23" radius="2.5" color="#DCDCDC"></a-sphere>
       </a-sphere>
 
       <a-entity position="-0 -10 80">
