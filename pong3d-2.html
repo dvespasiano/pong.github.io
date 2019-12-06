@@ -23,12 +23,12 @@
       function startGame() {
         const juiz = document.getElementById('juiz');
         const posicaoJuiz = juiz.getAttribute('position');
-        const rotationjuiz = juiz.getAttribute("rotatiom");
+
 
         if (comeca) {
           while (posicaoJuiz.x > -5) {
             posicaoJuiz.x = posicaoJuiz.x - 1;
-            
+
           }
         }
 
@@ -41,8 +41,15 @@
         p2.setAttribute("value", pontosP2);
       }
       function atualizaTela() {
-
-        console.log("teste");
+        const juiz = document.getElementById('juiz');
+        const ball = document.getElementById('ball');
+        const player = document.getElementById('player');
+        const enemy = document.getElementById('enemy');
+       
+        ball.object3D.position.x = -5;
+        ball.setAttribute('position',"-5 62.5 -23");
+        juiz.setAttribute("position","10  65 -22");
+        console.log("Chegou aqui");
       }
 
       document.onkeydown = press_keyboard;
@@ -62,8 +69,8 @@
         const juiz = document.getElementById('juiz');
         const posicaoJuiz = juiz.getAttribute('position');
         if (comeca) {
-        posicaoJuiz.z = 80;
-        comeca = "false";
+          posicaoJuiz.x = 150;
+          comeca = "false";
         }
       }
       AFRAME.registerComponent('mover-players', {
@@ -94,7 +101,7 @@
             this.el.object3D.translateX(temp_x * this.data.speed / 50);
             this.y_cord = event.clientY;
             this.x_cord = event.clientX;
-
+            const ball = document.getElementById('ball');
             const player = document.getElementById('player');
             const enemy = document.getElementById('enemy');
             const posicaoPlayer = player.getAttribute('position');
@@ -148,11 +155,13 @@
       <a-text value="Player 2: " width="100" id="p2" color="black" position="40 -52 0" rotation="0 0 0"></a-text>
       <a-text value="-" width="100" id="scoreP2" color="white" position="60 -52 0" rotation="0 0 0"></a-text>
 
-    </a-text>
-    <a-text value="Para começar pressione Spaco" width="100" bold=true id="instru1" color="white" position="-40 -60 0" rotation="0 0 0">
-    </a-text>
-    <a-text value="Para controlar a raquete use o mouse com o click pressionado" width="100" bold=true id="instru2" color="white" position="-40 -67 0" rotation="0 0 0">
-    </a-text>
+      </a-text>
+      <a-text value="Para começar pressione Spaco" width="100" bold=true id="instru1" color="white" position="-40 -60 0"
+        rotation="0 0 0">
+      </a-text>
+      <a-text value="Para controlar a raquete use o mouse com o click pressionado" width="100" bold=true id="instru2"
+        color="white" position="-40 -67 0" rotation="0 0 0">
+      </a-text>
       <!-- <a-box id="linha" width="0.1" height="38 " depth="0.1" position="0  5 -27" rotation="-90 0 0" color="#FFFFFF">
     </a-box>-->
       <a-plane static body physics-collider="ignoreSleep: true" src="img.jpg" position="0 4 -30" rotation="0 0 0"
@@ -190,7 +199,7 @@
       <!-- look-controls wasd-controls mexer paletas com  wasd-->
       <!--  mover-players mecher com mouse no eixo x-->
       </a-box>
-      <a-sphere static body id="ball" position="-5 62.5 -23" radius="2.5" color="#DCDCDC"></a-sphere>
+      <a-sphere static body physics-collider="ignoreSleep: false"id="ball" position="-5 62.5 -23" radius="2.5" color="#DCDCDC"></a-sphere>
       </a-sphere>
 
       <a-entity position="-0 -10 80">
