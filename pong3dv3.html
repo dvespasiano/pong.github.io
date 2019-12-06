@@ -20,6 +20,7 @@
             var comeca = "true";
             AFRAME.registerComponent('jogo', {
                 init: function () {
+                    var camera = document.createElement('a-camera');
                     const ball = document.getElementById('ball');
                     const player = document.getElementById('player');
                     const enemy = document.getElementById('enemy');
@@ -28,7 +29,7 @@
                     const posicaoBall = ball.getAttribute('position');
                     const juiz = document.getElementById('juiz');
                     const posicaoJuiz = juiz.getAttribute('position');
-
+                  
 
 
 
@@ -173,11 +174,14 @@
                 </a-text>
                 <a-text value="-" width="300" id="scoreP2" color="red" position="70 37 0" rotation="0 0 0"></a-text>
 
-                <a-text value="Para iniciar um novo jogo pressione Spaco" width="100" bold=true id="instru1"
-                    color="black" position="-36 105 0" rotation="0 0 0"> </a-text>
-                <a-text value="Para controlar a raquete use WASD" width="100" bold=true id="instru2" color="black"
+                <a-text value="Para iniciar um novo jogo pressione Spaco." width="120" bold=true id="instru1"
+                    color="black" position="-36 110 0" rotation="0 0 0"> </a-text>
+                <a-text value="Para controlar a raquete use WASD." width="120" bold=true id="instru2" color="black"
                     position="-36 100 0" rotation="0 0 0">
                 </a-text>
+                <a-text value="Quem fizer 10 pontos primeiro ganha ;)" width="120" bold=true id="instru2" color="black"
+                position="-36 90 0" rotation="0 0 0">
+            </a-text>
 
                 <a-entity mixin="mesa" position="0 0 10" rotation="90 0 0" color="black" static body
                     physics-collider="ignoreSleep: true"> </a-entity>
@@ -207,7 +211,7 @@
 
 
                 <a-entity position="0 36 130 ">
-                    <a-camera user-height="10.0" look-controls="enabled:false" wasd-controls="enabled:false">
+                    <a-camera user-height="10.0" look-controls="enabled:false" wasd-controls="enabled:false" jogo>
                     </a-camera>
                 </a-entity>
                 <a-sky id="sky" color="#b0c4de"></a-sky>
