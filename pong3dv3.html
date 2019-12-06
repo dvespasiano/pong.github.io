@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<scrip>
+    <meta charset="utf-8">
+    <title>PONG</title>
+    <meta name="description" content="PONG">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@^4.1.2/dist/aframe-animation-component.min.js"></script>
+    <script
+        src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+
+
+
+    <body>
+        <script type="text/javascript">
+
+            AFRAME.registerComponent('jogo', {
+                init: function () {
+                    const ball = document.getElementById('ball');
+                    const player = document.getElementById('player');
+                    const enemy = document.getElementById('enemy');
+                    const posicaoPlayer = player.getAttribute('position');
+                    const posicaoEnemy = enemy.getAttribute('position');
+                    const posicaoBall = ball.getAttribute('position');
+                    document.onkeydown = press_keyboard;
+                    function press_keyboard(evento) {
+                        if (evento.keyCode == 32) {//space
+
+                            console.log("começou")
+                        }
+                        if (evento.keyCode == 13) {//enter
+
+                        }
+                        if (evento.keyCode == 65) {//a
+                            posicaoPlayer.x--;
+                        }
+                        if (evento.keyCode == 87) {//w
+                            posicaoPlayer.z--;
+
+                        }
+                        if (evento.keyCode == 68) {//d
+                            posicaoPlayer.x++;
+                        }
+                        if (evento.keyCode == 83) {//s
+                            posicaoPlayer.z++;
+                        }
+
+                    }
+                }
+
+            });
+
+            AFRAME.registerComponent('pontuaf', {
+
+                init: function () {
+                    var p2 = document.getElementById("scoreP1");
+                    this.el.addEventListener("collisions", (e) => {
+                        pontosP1++;
+                        p2.setAttribute("value", pontosP1);
+                    })
+                    console.log(pontosP1)
+                }
+
+            });
+            var contP2;
+            AFRAME.registerComponent('pontuat', {
+                init: function () {
+                    console.log("aqui")
+                    var p1 = document.getElementById("scoreP2");
+                    this.el.addEventListener("collisions", (e) => {
+                        pontosP2++;
+                        p1.setAttribute("value", pontosP2);
+                    })
+
+                }
+
+            });
+
+
+        </script>
+
+        <body>
+            <a-scene physics="debug: false;gravity: 0;friction: 0; restitution: 1.0;" antialias="true">
+                <a-assets>
+
+                    <a-mixin id="mesa" img="mesa.jpg" geometry="primitive:box" scale="80 160 5" material="color:black"
+                        rotation="0 0 0" static body physics-collider="ignoreSleep: true">
+                    </a-mixin>
+
+                    <a-mixin id="racket" geometry="primitive:box" material="color: blue; opacity:0.8"
+                        scale="2.9  8 15.6" rotation="0 90 0"></a-mixin>
+
+                </a-assets>
+
+
+                <a-entity mixin="mesa" position="0 0 10" rotation="90 0 0" color="black" static body
+                    physics-collider="ignoreSleep: true"> </a-entity>
+
+                <a-entity id="mesaPingPong">
+                    <a-box id="barraLateralE" scale="0.1 180 20" rotation="90 0 0" position="-40.114 7.4 10.697"
+                        color="black" static-body physics-collider="ignoreSleep: true"></a-box>
+                    <a-box id="barraLateralD" scale="0.1 180 20" rotation="90 0 0" position="40.114 7.4 10.697"
+                        color="black " static body physics-collider="ignoreSleep: true"></a-box>
+                    <a-box id="golEnemy" scale="0.1 100 30" rotation="90 0 90" position="1.23 6.544 -70.065"
+                        color="black" static body physics-collider="ignoreSleep: true"></a-box>
+                    <a-box id="golJogador" scale="0.1 100 10" rotation="90 0 90" position="1.234 6.544 90.065"
+                        color="black" static body physics-collider="ignoreSleep: true"></a-box>
+                    <a-box id="linhaCentral" scale="0.1 80 1" rotation="0 0 90" position="1 2.5 12" color="white" static
+                        body physics-collider="ignoreSleep: true">
+                    </a-box>
+                </a-entity>
+
+                <a-box id="player" position="0 6 80" mixin="racket" color="blue" static-body
+                    physics-collider="ignoreSleep: true" acceleration="1000" jogo pontuaf></a-box>
+                <a-box id="enemy" position="0 6 -60" mixin="racket" color="red" static-body
+                    physics-collider="ignoreSleep: true" acceleration="1000" jogo pontuat></a-box>
+                <a-sphere id="ball" radius="2" position="0 6 70" color="white" static body
+                    physics-collider="ignoreSleep: false" jogo></a-sphere>
+
+
+
+
+                <a-text value="Player 1: " width="100" id="p1" color="black" position="-85 37 15" rotation="0 0 0">
+                </a-text>
+                <a-text value="-" width="100" bold=true id="scoreP1" color="white" position="-80 37 15"
+                    rotation="0 0 0">
+                </a-text>
+                <a-text value="Player 2: " width="100" id="p2" color="black" position="40 -52 0" rotation="0 0 0">
+                </a-text>
+                <a-text value="-" width="100" id="scoreP2" color="white" position="60 -52 0" rotation="0 0 0"></a-text>
+
+                </a-text>
+                <a-text value="Para começar pressione Spaco" width="100" bold=true id="instru1" color="white"
+                    position="-40 -60 0" rotation="0 0 0">
+                </a-text>
+                <a-text value="Para controlar a raquete use o mouse com o click pressionado" width="100" bold=true
+                    id="instru2" color="white" position="-40 -67 0" rotation="0 0 0">
+                </a-text>
+
+
+                <a-sky color="#ccc"></a-sky>
+
+                <a-entity position="0 40 140 ">
+                    <a-camera user-height="40.0" look-controls="enabled:false" wasd-controls="enabled:false">
+                    </a-camera>
+                </a-entity>
+
+
+                <a-assets>
+                    <a-sky id="sky" color="#00ced1"></a-sky>
+            </a-scene>
+        </body>
+
+</html>
