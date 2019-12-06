@@ -37,16 +37,28 @@
                         }
                         if (evento.keyCode == 65) {//a
                             posicaoPlayer.x--;
+                            if (posicaoPlayer.x < -31) {
+                                posicaoPlayer.x = -31;
+                            }
                         }
                         if (evento.keyCode == 87) {//w
                             posicaoPlayer.z--;
+                            if (posicaoPlayer.z < 13) {
+                                posicaoPlayer.z = 13;
+                            }
 
                         }
                         if (evento.keyCode == 68) {//d
                             posicaoPlayer.x++;
+                            if (posicaoPlayer.x > 31) {
+                                posicaoPlayer.x = 31;
+                            }
                         }
                         if (evento.keyCode == 83) {//s
                             posicaoPlayer.z++;
+                            if (posicaoPlayer.z > 80) {
+                                posicaoPlayer.z = 80;
+                            }
                         }
                         else {
 
@@ -54,9 +66,15 @@
 
                                 if (posicaoEnemy.x < Math.round(posicaoBall.x)) {
                                     posicaoEnemy.x = posicaoEnemy.x + 1;
+                                    if (posicaoEnemy.x > 31) {
+                                        posicaoEnemy.x = 31;
+                                    }
                                 }
                                 if (posicaoEnemy.x > Math.round(posicaoBall.x)) {
                                     posicaoEnemy.x = posicaoEnemy.x - 1;
+                                    if (posicaoEnemy.x < -31) {
+                                        posicaoEnemy.x = -31;
+                                    }
                                 }
                             }
                         }
@@ -103,7 +121,7 @@
                     </a-mixin>
 
                     <a-mixin id="racket" geometry="primitive:box" material="color: blue; opacity:0.8"
-                        scale="2.9  8 15.6" rotation="0 87 0"></a-mixin>
+                        scale="2.9  8 15.6" rotation="0 85 0"></a-mixin>
 
                 </a-assets>
 
@@ -136,16 +154,10 @@
 
                 <a-box id="player" position="0 6 80" mixin="racket" color="blue" static-body
                     physics-collider="ignoreSleep: true" acceleration="1000" jogo></a-box>
-                <a-box id="enemy" position="0 6 -60" mixin="racket" color="red" static-body
+                <a-box id="enemy" position="0 6 -60" mixin="racket"   rotation="0 100 0"color="red" static-body
                     physics-collider="ignoreSleep: true" acceleration="1000" enemy-play></a-box>
                 <a-sphere id="ball" radius="2" position="0 6 70" color="white" static body
                     physics-collider="ignoreSleep: false" jogo></a-sphere>
-
-
-
-
-
-
 
 
                 <a-entity position="0 36 130 ">
