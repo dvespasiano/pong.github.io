@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 
 <scrip>
     <meta charset="utf-8">
@@ -18,6 +17,7 @@
         <script type="text/javascript">
             var pontosP1 = 0;
             var pontosP2 = 0;
+            var comeca = "true";
             AFRAME.registerComponent('jogo', {
                 init: function () {
                     const ball = document.getElementById('ball');
@@ -26,11 +26,18 @@
                     const posicaoPlayer = player.getAttribute('position');
                     const posicaoEnemy = enemy.getAttribute('position');
                     const posicaoBall = ball.getAttribute('position');
+                    const juiz = document.getElementById('juiz');
+                    const posicaoJuiz = juiz.getAttribute('position');
+
+
+
+
                     document.onkeydown = press_keyboard;
                     function press_keyboard(evento) {
-                        if (evento.keyCode == 32) {//space
 
-                            console.log("começou")
+                        if (evento.keyCode == 32) {//space
+                            startGame();
+
                         }
                         if (evento.keyCode == 13) {//enter
 
@@ -40,12 +47,14 @@
                             if (posicaoPlayer.x < -31) {
                                 posicaoPlayer.x = -31;
                             }
+                            posicaoJuiz.y = -50;
                         }
                         if (evento.keyCode == 87) {//w
                             posicaoPlayer.z--;
                             if (posicaoPlayer.z < 13) {
                                 posicaoPlayer.z = 13;
                             }
+                            posicaoJuiz.y = -50;
 
                         }
                         if (evento.keyCode == 68) {//d
@@ -66,15 +75,11 @@
 
                                 if (posicaoEnemy.x < Math.round(posicaoBall.x)) {
                                     posicaoEnemy.x = posicaoEnemy.x + 1;
-                                    if (posicaoEnemy.x > 31) {
-                                        posicaoEnemy.x = 31;
-                                    }
+
                                 }
                                 if (posicaoEnemy.x > Math.round(posicaoBall.x)) {
                                     posicaoEnemy.x = posicaoEnemy.x - 1;
-                                    if (posicaoEnemy.x < -31) {
-                                        posicaoEnemy.x = -31;
-                                    }
+
                                 }
                             }
                         }
@@ -83,31 +88,70 @@
                 }
 
 
-            });
+            }
 
-            AFRAME.registerComponent('pontuaf', {
+            );
+
+            AFRAME.registerComponent('pontuaf', { //tratar colisao atras de vermelho
 
                 init: function () {
+                    var cont = 0;
                     var p1 = document.getElementById("scoreP1");
                     this.el.addEventListener("collisions", (e) => {
-                        pontosP1++;
-                        p1.setAttribute("value", pontosP1);
+                        cont++;
+                        if (cont == 2) {
+                            pontosP1++;
+                            p1.setAttribute("value", pontosP1);
+                            cont = 0; 
+                            vencedor();
+                        }
 
                     })
+                   
                 }
 
             });
 
-            AFRAME.registerComponent('pontuat', {
+            AFRAME.registerComponent('pontuat', { //tratar colisao atras de azul
                 init: function () {
+                    var cont = 0;
                     var p2 = document.getElementById("scoreP2");
                     this.el.addEventListener("collisions", (e) => {
-                        pontosP2++;
-                        p2.setAttribute("value", pontosP2);
+                        cont++;
+                        if (cont == 2) {
+                            pontosP2++;
+                            p2.setAttribute("value", pontosP2);
+                            cont = 0; 
+                             vencedor();
+                        }
                     })
+                  
                 }
 
             });
+
+            function startGame() {
+                window.location.reload()
+            }
+
+            function vencedor() {
+                var value = document.getElementById("scoreP1");
+                var value2 = document.getElementById("scoreP2");
+                var pts1 = value.getAttribute('value');
+                var pts2 = value2.getAttribute('value');
+                console.log(pts2)
+                if (pts1 == 10) {
+                    window.onloadend = window.alert("PARABENS !! VOCE GANHOU");
+                    startGame();
+                }
+
+                if (pts2 == 10) {
+                    window.onloadend = window.alert(" QUE PENA !! NAO FUNFOU");
+                    startGame();
+                }
+
+            }
+
 
 
         </script>
@@ -121,7 +165,7 @@
                     </a-mixin>
 
                     <a-mixin id="racket" geometry="primitive:box" material="color: blue; opacity:0.8"
-                        scale="2.9  8 15.6" rotation="0 85 0"></a-mixin>
+                        scale="2.9  8 15.6" rotation="0 90 0"></a-mixin>
 
                 </a-assets>
 
@@ -129,10 +173,10 @@
                 </a-text>
                 <a-text value="-" width="300" id="scoreP2" color="red" position="70 37 0" rotation="0 0 0"></a-text>
 
-                <a-text value="Para começar pressione Spaco" width="100" bold=true id="instru1" color="white"
-                    position="-26 77 0" rotation="0 0 0"> </a-text>
-                <a-text value="Para controlar a raquete use o mouse com o click pressionado" width="100" bold=true
-                    id="instru2" color="white" position="-16 77 0" rotation="0 0 0">
+                <a-text value="Para iniciar um novo jogo pressione Spaco" width="100" bold=true id="instru1"
+                    color="black" position="-36 105 0" rotation="0 0 0"> </a-text>
+                <a-text value="Para controlar a raquete use WASD" width="100" bold=true id="instru2" color="black"
+                    position="-36 100 0" rotation="0 0 0">
                 </a-text>
 
                 <a-entity mixin="mesa" position="0 0 10" rotation="90 0 0" color="black" static body
@@ -153,10 +197,12 @@
                 </a-entity>
 
                 <a-box id="player" position="0 6 80" mixin="racket" color="blue" static-body
-                    physics-collider="ignoreSleep: true" acceleration="1000" jogo></a-box>
-                <a-box id="enemy" position="0 6 -60" mixin="racket"   rotation="0 100 0"color="red" static-body
-                    physics-collider="ignoreSleep: true" acceleration="1000" enemy-play></a-box>
-                <a-sphere id="ball" radius="2" position="0 6 70" color="white" static body
+                    physics-collider="ignoreSleep: true" acceleration="10000" jogo></a-box>
+                <a-box id="enemy" position="0 6 -60" mixin="racket" color="red" static-body
+                    physics-collider="ignoreSleep: true" acceleration="10000" enemy-play></a-box>
+                <a-box id="juiz" position="-36 6 11" mixin="racket" rotation=" 0 130 0" color="white" static-body
+                    physics-collider="ignoreSleep: true" acceleration="10000" jogo></a-box>
+                <a-sphere id="ball" radius="2" position="-35.9 6 11" color="white" static body
                     physics-collider="ignoreSleep: false" jogo></a-sphere>
 
 
@@ -164,10 +210,8 @@
                     <a-camera user-height="10.0" look-controls="enabled:false" wasd-controls="enabled:false">
                     </a-camera>
                 </a-entity>
-
-                <a-assets>
-                    <a-sky id="sky" color="#00ced1"></a-sky>
+                <a-sky id="sky" color="#b0c4de"></a-sky>
             </a-scene>
         </body>
 
-</html>
+        </html>
