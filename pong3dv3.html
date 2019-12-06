@@ -44,14 +44,14 @@
 
                         }
                         if (evento.keyCode == 65) {//a
-                            posicaoPlayer.x--;
+                            posicaoPlayer.x-=2;
                             if (posicaoPlayer.x < -31) {
                                 posicaoPlayer.x = -31;
                             }
                             posicaoJuiz.y = -50;
                         }
                         if (evento.keyCode == 87) {//w
-                            posicaoPlayer.z--;
+                            posicaoPlayer.z-=1.5;
                             if (posicaoPlayer.z < 13) {
                                 posicaoPlayer.z = 13;
                             }
@@ -59,13 +59,13 @@
 
                         }
                         if (evento.keyCode == 68) {//d
-                            posicaoPlayer.x++;
+                            posicaoPlayer.x+=2;
                             if (posicaoPlayer.x > 31) {
                                 posicaoPlayer.x = 31;
                             }
                         }
                         if (evento.keyCode == 83) {//s
-                            posicaoPlayer.z++;
+                            posicaoPlayer.z+=1.5;
                             if (posicaoPlayer.z > 80) {
                                 posicaoPlayer.z = 80;
                             }
