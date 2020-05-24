@@ -1,35 +1,88 @@
 <html>
+<meta charset="utf-8" />
 
 <head>
+
     <title>
         Trabalho de CG
     </title>
     <style>
         * {
             font-family: Helvetica, sans-serif;
+            padding: 0;
+            margin: 0;
         }
 
-        a {
-            font-size: 25px;
+        body {
+            background: linear-gradient(to top, #33ccff, #e6f9ff);
+        }
+
+        .cabecalho {
+            margin-top: 5%;
+            text-align: center;
+        }
+
+        .descricao {
+            margin-top: 5%;
+            margin-left: 5%;
+            text-align: left;
+        }
+
+        .faseUm,
+        .faseDois,
+        .faseTres,
+        .faseQuatro {
+            justify-content: center;
+            text-align: center;
+            margin-top: 5%;
+            margin-left: 10%;
+        }
+
+        .faseUm img,
+        .faseDois img,
+        .faseTres img,
+        .faseQuatro img {
+            max-width: 700px;
         }
     </style>
 </head>
 
 <body>
-    <h1 align="center">Seja bem vindo ao trabalho de CG</h1>
-    <h2 align="center"> Wendel Carvalho e Denis Vespasiano </h2>
-    <p>
-        .
-        <p>
-            .
-            <ul style="list-style-type:square;">
-                <li><a href="pong2d.html"> Trabalho Pratico Final - Primeira Fase</a></li></br></br>
-                <li><a href="pong3d.html"> Trabalho Pratico Final - Segunda Fase</a></li></br></br>
-                <li><a href="pong3d-2.html"> Trabalho Pratico Final parte II - Segunda Fase</a></li></br></br>
-                <li><a href="pong3dv3.html"> Trabalho Pratico Final parte III - Segunda Fase</a></li></br></br>
-            </ul>
-        </p>
-    </p>
+    <div class="cabecalho">
+        <h1>Trabalho de Computação Gráfica</h1>
+    </div>
+    <div class="descricao">
+        <p>Os jogos abaixo foram desenvolvidos para a disciplina de Computação Gráfica</p>
+        <p>do CEFET-MG de Timóteo pelos alunos Denis e Wendel</p>
+    </div>
+    <div class="faseUm">
+        <strong>Fase 1</strong>
+        <p></p>
+        <p>Jogo pong Clássico feito com OpenGL</p>
+        <img href="pong2d.html" src="./fase1.png" />
+        <li><a href="pong2d.html">Link do jogo</a></li></br></br>
+    </div>
+    <div class="faseDois">
+        <strong>Fase 2</strong>
+        <p></p>
+        <p>Cenario em 3D do pong feito com OpenGL</p>
+        <img href="pong3d.html" src="./fase2.png" />
+        <li><a href="pong3d.html">Link do jogo</a></li></br></br>
+    </div>
+    <div class="faseTres">
+        <strong>Fase 3</strong>
+        <p></p>
+        <p>Cenario em 3D do pong feito com A-Frame</p>
+        <img href="pong3d-2.html" src="./fase3.png" />
+        <li><a href="pong3d-2.html">Link do jogo</a></li></br></br>
+    </div>
+    <div class="faseQuatro">
+        <strong>Fase 4</strong>
+        <p></p>
+        <p>Jogo Pong em 3D do pong feito com A-Frame</p>
+        <img href="pong3dv3.html" src="./fase4.png" />
+        <li><a href="pong3dv3.html">Link do jogo</a></li></br></br>
+    </div>
 
 </body>
 
