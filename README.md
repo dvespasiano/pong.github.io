@@ -4,7 +4,7 @@
  
  **Alunos**
 
-1. Denis Vespasiano  - [Github](https://www.github.com/dedecefet)
+1. Denis Vespasiano  - [Github](https://www.github.com/dvespasiano)
 2. Wendel de Carvalo - [Github](https://www.github.com/w-cn)
 
 O trabalho foi dividido em 2 fases e cada uma dessas fases foi dividida em uma parte
@@ -14,7 +14,7 @@ O trabalho foi dividido em 2 fases e cada uma dessas fases foi dividida em uma p
 
 Na primeira parte construimos o clássico jogo ping-pong em 2D com OpenGL de forma clásica.
 
-[Link do jogo](https://dedecefet.github.io/pong.github.io/pong2d.html)
+[Link do jogo](https://dvespasiano.github.io/pong.github.io/pong2d.html)
 
 **Instruções para jogar**
 
@@ -31,7 +31,7 @@ Vence quem fizer 10 pontos primeiro.
 
 A segunda fase consistia apenas em construir um modelo 3D do mesmo jogo com um cenário em volta utilizando o framework A-Frame
 
-[Link do jogo](https://dedecefet.github.io/pong.github.io/pong3d.html)
+[Link do jogo](https://dvespasiano.github.io/pong.github.io/pong3d.html)
 
 **Instruções**
 
@@ -48,7 +48,7 @@ A segunda fase não exigia um jogo funcional, apenas um modelo 3D com o jogador 
 
 A primeira fase consistia em montar o jogo clássico em outro framework, sem cenário.
 
-[Link do jogo](https://dedecefet.github.io/pong.github.io/pong3d-2.html)
+[Link do jogo](https://dvespasiano.github.io/pong.github.io/pong3d-2.html)
 
 OBS: é apenas um cenário, não possui jogabilidade.
 
@@ -56,7 +56,7 @@ OBS: é apenas um cenário, não possui jogabilidade.
 
 A segunda fase consistia em um jogo Pong com uma visão diferente das demais em um framework escolhido pela dupla.
 
-[Link do jogo](https://dedecefet.github.io/pong.github.io/pong3dv3.html)
+[Link do jogo](https://dvespasiano.github.io/pong.github.io/pong3dv3.html)
 
 As instruções do jogo são as mesmas dos jogos anteriores.
 
